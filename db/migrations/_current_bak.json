@@ -1,0 +1,1017 @@
+{
+    "tables": {
+        "Bpms": {
+            "tableName": "Bpms",
+            "schema": {
+                "id": {
+                    "allowNull": false,
+                    "primaryKey": true,
+                    "autoIncrement": true,
+                    "field": "id",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "title": {
+                    "field": "title",
+                    "seqType": "Sequelize.STRING"
+                },
+                "showOnOrderList": {
+                    "field": "showOnOrderList",
+                    "seqType": "Sequelize.ARRAY(Sequelize.INTEGER)"
+                },
+                "details": {
+                    "field": "details",
+                    "seqType": "Sequelize.ARRAY(Sequelize.INTEGER)"
+                },
+                "changeStatusFrom": {
+                    "field": "changeStatusFrom",
+                    "seqType": "Sequelize.ARRAY(Sequelize.INTEGER)"
+                },
+                "changeStatusTo": {
+                    "field": "changeStatusTo",
+                    "seqType": "Sequelize.ARRAY(Sequelize.INTEGER)"
+                },
+                "edit": {
+                    "field": "edit",
+                    "seqType": "Sequelize.JSONB"
+                },
+                "createdAt": {
+                    "allowNull": false,
+                    "field": "createdAt",
+                    "seqType": "Sequelize.DATE"
+                },
+                "updatedAt": {
+                    "allowNull": false,
+                    "field": "updatedAt",
+                    "seqType": "Sequelize.DATE"
+                }
+            },
+            "indexes": []
+        },
+        "Cases": {
+            "tableName": "Cases",
+            "schema": {
+                "id": {
+                    "allowNull": false,
+                    "primaryKey": true,
+                    "autoIncrement": true,
+                    "field": "id",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "factory_id": {
+                    "allowNull": false,
+                    "field": "factory_id",
+                    "references": {
+                        "model": "Factories",
+                        "key": "id"
+                    },
+                    "onDelete": "CASCADE",
+                    "onUpdate": "CASCADE",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "title": {
+                    "allowNull": false,
+                    "field": "title",
+                    "seqType": "Sequelize.STRING"
+                },
+                "fileUrl": {
+                    "allowNull": false,
+                    "field": "fileUrl",
+                    "seqType": "Sequelize.STRING"
+                },
+                "createdAt": {
+                    "allowNull": false,
+                    "defaultValue": {
+                        "internal": true,
+                        "value": "Sequelize.NOW"
+                    },
+                    "field": "createdAt",
+                    "seqType": "Sequelize.DATE"
+                },
+                "updatedAt": {
+                    "allowNull": false,
+                    "defaultValue": {
+                        "internal": true,
+                        "value": "Sequelize.NOW"
+                    },
+                    "field": "updatedAt",
+                    "seqType": "Sequelize.DATE"
+                }
+            },
+            "indexes": []
+        },
+        "Factories": {
+            "tableName": "Factories",
+            "schema": {
+                "id": {
+                    "allowNull": false,
+                    "primaryKey": true,
+                    "autoIncrement": true,
+                    "field": "id",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "abbrvCode": {
+                    "allowNull": false,
+                    "field": "abbrvCode",
+                    "seqType": "Sequelize.STRING"
+                },
+                "name": {
+                    "allowNull": false,
+                    "field": "name",
+                    "seqType": "Sequelize.STRING"
+                },
+                "mobile": {
+                    "field": "mobile",
+                    "seqType": "Sequelize.STRING"
+                },
+                "status": {
+                    "allowNull": false,
+                    "field": "status",
+                    "seqType": "Sequelize.STRING"
+                },
+                "numberOfPersonnels": {
+                    "defaultValue": {
+                        "value": 0
+                    },
+                    "field": "numberOfPersonnels",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "numberOfCases": {
+                    "field": "numberOfCases",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "createdAt": {
+                    "allowNull": false,
+                    "defaultValue": {
+                        "internal": true,
+                        "value": "Sequelize.NOW"
+                    },
+                    "field": "createdAt",
+                    "seqType": "Sequelize.DATE"
+                },
+                "updatedAt": {
+                    "allowNull": false,
+                    "defaultValue": {
+                        "internal": true,
+                        "value": "Sequelize.NOW"
+                    },
+                    "field": "updatedAt",
+                    "seqType": "Sequelize.DATE"
+                }
+            },
+            "indexes": []
+        },
+        "Harmfulfactors": {
+            "tableName": "Harmfulfactors",
+            "schema": {
+                "id": {
+                    "allowNull": false,
+                    "primaryKey": true,
+                    "autoIncrement": true,
+                    "field": "id",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "examiner_id": {
+                    "field": "examiner_id",
+                    "allowNull": true,
+                    "references": {
+                        "model": "Users",
+                        "key": "id"
+                    },
+                    "onDelete": "CASCADE",
+                    "onUpdate": "CASCADE",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "examined_id": {
+                    "field": "examined_id",
+                    "allowNull": true,
+                    "references": {
+                        "model": "Users",
+                        "key": "id"
+                    },
+                    "onDelete": "CASCADE",
+                    "onUpdate": "CASCADE",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "currentJobRole": {
+                    "field": "currentJobRole",
+                    "seqType": "Sequelize.STRING"
+                },
+                "currentJobDuty": {
+                    "field": "currentJobDuty",
+                    "seqType": "Sequelize.STRING"
+                },
+                "currentJobStartingdate": {
+                    "field": "currentJobStartingdate",
+                    "seqType": "Sequelize.STRING"
+                },
+                "resultDescription": {
+                    "field": "resultDescription",
+                    "seqType": "Sequelize.TEXT"
+                },
+                "healthExpertSuggestion": {
+                    "field": "healthExpertSuggestion",
+                    "seqType": "Sequelize.ARRAY(Sequelize.STRING)"
+                },
+                "DiseaseBg": {
+                    "field": "DiseaseBg",
+                    "seqType": "Sequelize.ARRAY(Sequelize.STRING)"
+                },
+                "description": {
+                    "field": "description",
+                    "seqType": "Sequelize.TEXT"
+                },
+                "height": {
+                    "field": "height",
+                    "seqType": "Sequelize.STRING"
+                },
+                "weight": {
+                    "field": "weight",
+                    "seqType": "Sequelize.STRING"
+                },
+                "bmi": {
+                    "field": "bmi",
+                    "seqType": "Sequelize.STRING"
+                },
+                "bmiStatus": {
+                    "field": "bmiStatus",
+                    "seqType": "Sequelize.STRING"
+                },
+                "createdAt": {
+                    "allowNull": false,
+                    "defaultValue": {
+                        "internal": true,
+                        "value": "Sequelize.NOW"
+                    },
+                    "field": "createdAt",
+                    "seqType": "Sequelize.DATE"
+                },
+                "updatedAt": {
+                    "allowNull": false,
+                    "defaultValue": {
+                        "internal": true,
+                        "value": "Sequelize.NOW"
+                    },
+                    "field": "updatedAt",
+                    "seqType": "Sequelize.DATE"
+                }
+            },
+            "indexes": []
+        },
+        "HealthInfos": {
+            "tableName": "HealthInfos",
+            "schema": {
+                "id": {
+                    "allowNull": false,
+                    "primaryKey": true,
+                    "autoIncrement": true,
+                    "field": "id",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "examiner_id": {
+                    "field": "examiner_id",
+                    "allowNull": true,
+                    "references": {
+                        "model": "Users",
+                        "key": "id"
+                    },
+                    "onDelete": "CASCADE",
+                    "onUpdate": "CASCADE",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "examined_id": {
+                    "field": "examined_id",
+                    "allowNull": true,
+                    "references": {
+                        "model": "Users",
+                        "key": "id"
+                    },
+                    "onDelete": "CASCADE",
+                    "onUpdate": "CASCADE",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "currentJobRole": {
+                    "field": "currentJobRole",
+                    "seqType": "Sequelize.STRING"
+                },
+                "currentJobDuty": {
+                    "field": "currentJobDuty",
+                    "seqType": "Sequelize.STRING"
+                },
+                "currentJobStartingdate": {
+                    "field": "currentJobStartingdate",
+                    "seqType": "Sequelize.STRING"
+                },
+                "resultDescription": {
+                    "field": "resultDescription",
+                    "seqType": "Sequelize.TEXT"
+                },
+                "healthExpertSuggestion": {
+                    "field": "healthExpertSuggestion",
+                    "seqType": "Sequelize.ARRAY(Sequelize.STRING)"
+                },
+                "diseaseBg": {
+                    "field": "diseaseBg",
+                    "seqType": "Sequelize.ARRAY(Sequelize.STRING)"
+                },
+                "diseaseBgDescription": {
+                    "field": "diseaseBgDescription",
+                    "seqType": "Sequelize.TEXT"
+                },
+                "height": {
+                    "field": "height",
+                    "seqType": "Sequelize.STRING"
+                },
+                "weight": {
+                    "field": "weight",
+                    "seqType": "Sequelize.STRING"
+                },
+                "bmi": {
+                    "field": "bmi",
+                    "seqType": "Sequelize.STRING"
+                },
+                "bmiStatus": {
+                    "field": "bmiStatus",
+                    "seqType": "Sequelize.STRING"
+                },
+                "bloodPressure": {
+                    "field": "bloodPressure",
+                    "seqType": "Sequelize.STRING"
+                },
+                "pulsePerMinute": {
+                    "field": "pulsePerMinute",
+                    "seqType": "Sequelize.STRING"
+                },
+                "testResults": {
+                    "field": "testResults",
+                    "seqType": "Sequelize.ARRAY(Sequelize.STRING)"
+                },
+                "testDescription": {
+                    "field": "testDescription",
+                    "seqType": "Sequelize.TEXT"
+                },
+                "examinationDescription": {
+                    "field": "examinationDescription",
+                    "seqType": "Sequelize.ARRAY(Sequelize.STRING)"
+                },
+                "rightEyeVisualAcuity": {
+                    "field": "rightEyeVisualAcuity",
+                    "seqType": "Sequelize.STRING"
+                },
+                "leftEyeVisualAcuity": {
+                    "field": "leftEyeVisualAcuity",
+                    "seqType": "Sequelize.STRING"
+                },
+                "colorVision": {
+                    "field": "colorVision",
+                    "seqType": "Sequelize.STRING"
+                },
+                "visualField": {
+                    "field": "visualField",
+                    "seqType": "Sequelize.STRING"
+                },
+                "depthVision": {
+                    "field": "depthVision",
+                    "seqType": "Sequelize.STRING"
+                },
+                "optometryDescription": {
+                    "field": "optometryDescription",
+                    "seqType": "Sequelize.TEXT"
+                },
+                "rightEarCondition": {
+                    "field": "rightEarCondition",
+                    "seqType": "Sequelize.STRING"
+                },
+                "leftEarCondition": {
+                    "field": "leftEarCondition",
+                    "seqType": "Sequelize.STRING"
+                },
+                "audiometryDescription": {
+                    "field": "audiometryDescription",
+                    "seqType": "Sequelize.TEXT"
+                },
+                "spiro": {
+                    "field": "spiro",
+                    "seqType": "Sequelize.STRING"
+                },
+                "spirometryDescription": {
+                    "field": "spirometryDescription",
+                    "seqType": "Sequelize.TEXT"
+                },
+                "ecg": {
+                    "field": "ecg",
+                    "seqType": "Sequelize.STRING"
+                },
+                "ecgDescription": {
+                    "field": "ecgDescription",
+                    "seqType": "Sequelize.TEXT"
+                },
+                "medicineExpertSuggest": {
+                    "field": "medicineExpertSuggest",
+                    "seqType": "Sequelize.TEXT"
+                },
+                "medicalAdvice": {
+                    "field": "medicalAdvice",
+                    "seqType": "Sequelize.ARRAY(Sequelize.STRING)"
+                },
+                "medicalAdviceDescription": {
+                    "field": "medicalAdviceDescription",
+                    "seqType": "Sequelize.TEXT"
+                },
+                "createdAt": {
+                    "allowNull": false,
+                    "defaultValue": {
+                        "internal": true,
+                        "value": "Sequelize.NOW"
+                    },
+                    "field": "createdAt",
+                    "seqType": "Sequelize.DATE"
+                },
+                "updatedAt": {
+                    "allowNull": false,
+                    "defaultValue": {
+                        "internal": true,
+                        "value": "Sequelize.NOW"
+                    },
+                    "field": "updatedAt",
+                    "seqType": "Sequelize.DATE"
+                }
+            },
+            "indexes": []
+        },
+        "Optometryaudiometries": {
+            "tableName": "Optometryaudiometries",
+            "schema": {
+                "id": {
+                    "allowNull": false,
+                    "primaryKey": true,
+                    "autoIncrement": true,
+                    "field": "id",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "examiner_id": {
+                    "field": "examiner_id",
+                    "allowNull": true,
+                    "references": {
+                        "model": "Users",
+                        "key": "id"
+                    },
+                    "onDelete": "CASCADE",
+                    "onUpdate": "CASCADE",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "examined_id": {
+                    "field": "examined_id",
+                    "allowNull": true,
+                    "references": {
+                        "model": "Users",
+                        "key": "id"
+                    },
+                    "onDelete": "CASCADE",
+                    "onUpdate": "CASCADE",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "rightEyeVisualAcuity": {
+                    "field": "rightEyeVisualAcuity",
+                    "seqType": "Sequelize.STRING"
+                },
+                "leftEyeVisualAcuity": {
+                    "field": "leftEyeVisualAcuity",
+                    "seqType": "Sequelize.STRING"
+                },
+                "colorVision": {
+                    "field": "colorVision",
+                    "seqType": "Sequelize.STRING"
+                },
+                "visualField": {
+                    "field": "visualField",
+                    "seqType": "Sequelize.STRING"
+                },
+                "depthVision": {
+                    "field": "depthVision",
+                    "seqType": "Sequelize.STRING"
+                },
+                "optometryDescription": {
+                    "field": "optometryDescription",
+                    "seqType": "Sequelize.TEXT"
+                },
+                "rightEarCondition": {
+                    "field": "rightEarCondition",
+                    "seqType": "Sequelize.STRING"
+                },
+                "leftEarCondition": {
+                    "field": "leftEarCondition",
+                    "seqType": "Sequelize.STRING"
+                },
+                "audiometryDescription": {
+                    "field": "audiometryDescription",
+                    "seqType": "Sequelize.TEXT"
+                },
+                "createdAt": {
+                    "allowNull": false,
+                    "defaultValue": {
+                        "internal": true,
+                        "value": "Sequelize.NOW"
+                    },
+                    "field": "createdAt",
+                    "seqType": "Sequelize.DATE"
+                },
+                "updatedAt": {
+                    "allowNull": false,
+                    "defaultValue": {
+                        "internal": true,
+                        "value": "Sequelize.NOW"
+                    },
+                    "field": "updatedAt",
+                    "seqType": "Sequelize.DATE"
+                }
+            },
+            "indexes": []
+        },
+        "Personnels": {
+            "tableName": "Personnels",
+            "schema": {
+                "id": {
+                    "allowNull": false,
+                    "primaryKey": true,
+                    "autoIncrement": true,
+                    "field": "id",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "factoryName": {
+                    "field": "factoryName",
+                    "seqType": "Sequelize.STRING"
+                },
+                "examinationType": {
+                    "field": "examinationType",
+                    "seqType": "Sequelize.STRING"
+                },
+                "date": {
+                    "field": "date",
+                    "seqType": "Sequelize.STRING"
+                },
+                "fileNo": {
+                    "field": "fileNo",
+                    "seqType": "Sequelize.STRING"
+                },
+                "personalNo": {
+                    "field": "personalNo",
+                    "seqType": "Sequelize.STRING"
+                },
+                "fullName": {
+                    "field": "fullName",
+                    "seqType": "Sequelize.STRING"
+                },
+                "fatherName": {
+                    "field": "fatherName",
+                    "seqType": "Sequelize.STRING"
+                },
+                "gender": {
+                    "field": "gender",
+                    "seqType": "Sequelize.STRING"
+                },
+                "maritalStatus": {
+                    "field": "maritalStatus",
+                    "seqType": "Sequelize.STRING"
+                },
+                "childrenNumber": {
+                    "field": "childrenNumber",
+                    "seqType": "Sequelize.STRING"
+                },
+                "birthYear": {
+                    "field": "birthYear",
+                    "seqType": "Sequelize.STRING"
+                },
+                "SSN": {
+                    "field": "SSN",
+                    "seqType": "Sequelize.STRING"
+                },
+                "militaryStatus": {
+                    "field": "militaryStatus",
+                    "seqType": "Sequelize.STRING"
+                },
+                "serviceLine": {
+                    "field": "serviceLine",
+                    "seqType": "Sequelize.STRING"
+                },
+                "description": {
+                    "field": "description",
+                    "seqType": "Sequelize.STRING"
+                },
+                "status": {
+                    "field": "status",
+                    "seqType": "Sequelize.STRING"
+                },
+                "createdAt": {
+                    "allowNull": false,
+                    "defaultValue": {
+                        "internal": true,
+                        "value": "Sequelize.NOW"
+                    },
+                    "field": "createdAt",
+                    "seqType": "Sequelize.DATE"
+                },
+                "updatedAt": {
+                    "allowNull": false,
+                    "defaultValue": {
+                        "internal": true,
+                        "value": "Sequelize.NOW"
+                    },
+                    "field": "updatedAt",
+                    "seqType": "Sequelize.DATE"
+                },
+                "factory_id": {
+                    "allowNull": true,
+                    "references": {
+                        "model": "Factories",
+                        "key": "id"
+                    },
+                    "onDelete": "CASCADE",
+                    "onUpdate": "CASCADE",
+                    "field": "factory_id",
+                    "seqType": "Sequelize.INTEGER"
+                }
+            },
+            "indexes": []
+        },
+        "Settings": {
+            "tableName": "Settings",
+            "schema": {
+                "id": {
+                    "allowNull": false,
+                    "primaryKey": true,
+                    "autoIncrement": true,
+                    "field": "id",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "factoryName": {
+                    "field": "factoryName",
+                    "seqType": "Sequelize.STRING"
+                },
+                "logoUrl": {
+                    "field": "logoUrl",
+                    "seqType": "Sequelize.STRING"
+                },
+                "loginPhotoUrl": {
+                    "field": "loginPhotoUrl",
+                    "seqType": "Sequelize.STRING"
+                },
+                "panelUsername": {
+                    "field": "panelUsername",
+                    "seqType": "Sequelize.STRING"
+                },
+                "panelPassword": {
+                    "field": "panelPassword",
+                    "seqType": "Sequelize.STRING"
+                },
+                "message": {
+                    "field": "message",
+                    "seqType": "Sequelize.STRING"
+                },
+                "createdAt": {
+                    "allowNull": false,
+                    "defaultValue": {
+                        "internal": true,
+                        "value": "Sequelize.NOW"
+                    },
+                    "field": "createdAt",
+                    "seqType": "Sequelize.DATE"
+                },
+                "updatedAt": {
+                    "allowNull": false,
+                    "defaultValue": {
+                        "internal": true,
+                        "value": "Sequelize.NOW"
+                    },
+                    "field": "updatedAt",
+                    "seqType": "Sequelize.DATE"
+                }
+            },
+            "indexes": []
+        },
+        "SpirometryEcgs": {
+            "tableName": "SpirometryEcgs",
+            "schema": {
+                "id": {
+                    "allowNull": false,
+                    "primaryKey": true,
+                    "autoIncrement": true,
+                    "field": "id",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "examiner_id": {
+                    "field": "examiner_id",
+                    "allowNull": true,
+                    "references": {
+                        "model": "Users",
+                        "key": "id"
+                    },
+                    "onDelete": "CASCADE",
+                    "onUpdate": "CASCADE",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "examined_id": {
+                    "field": "examined_id",
+                    "allowNull": true,
+                    "references": {
+                        "model": "Users",
+                        "key": "id"
+                    },
+                    "onDelete": "CASCADE",
+                    "onUpdate": "CASCADE",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "spiro": {
+                    "field": "spiro",
+                    "seqType": "Sequelize.STRING"
+                },
+                "spirometryDescription": {
+                    "field": "spirometryDescription",
+                    "seqType": "Sequelize.STRING"
+                },
+                "ecg": {
+                    "field": "ecg",
+                    "seqType": "Sequelize.STRING"
+                },
+                "ecgDescription": {
+                    "field": "ecgDescription",
+                    "seqType": "Sequelize.STRING"
+                },
+                "medicineExpertSuggest": {
+                    "field": "medicineExpertSuggest",
+                    "seqType": "Sequelize.STRING"
+                },
+                "medicalAdvice": {
+                    "field": "medicalAdvice",
+                    "seqType": "Sequelize.ARRAY(Sequelize.STRING)"
+                },
+                "description": {
+                    "field": "description",
+                    "seqType": "Sequelize.STRING"
+                },
+                "createdAt": {
+                    "allowNull": false,
+                    "defaultValue": {
+                        "internal": true,
+                        "value": "Sequelize.NOW"
+                    },
+                    "field": "createdAt",
+                    "seqType": "Sequelize.DATE"
+                },
+                "updatedAt": {
+                    "allowNull": false,
+                    "defaultValue": {
+                        "internal": true,
+                        "value": "Sequelize.NOW"
+                    },
+                    "field": "updatedAt",
+                    "seqType": "Sequelize.DATE"
+                }
+            },
+            "indexes": []
+        },
+        "Sugguestions": {
+            "tableName": "Sugguestions",
+            "schema": {
+                "id": {
+                    "allowNull": false,
+                    "primaryKey": true,
+                    "autoIncrement": true,
+                    "field": "id",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "user_id": {
+                    "field": "user_id",
+                    "allowNull": true,
+                    "references": {
+                        "model": "Users",
+                        "key": "id"
+                    },
+                    "onDelete": "CASCADE",
+                    "onUpdate": "CASCADE",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "factory_id": {
+                    "field": "factory_id",
+                    "allowNull": true,
+                    "references": {
+                        "model": "Factories",
+                        "key": "id"
+                    },
+                    "onDelete": "CASCADE",
+                    "onUpdate": "CASCADE",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "title": {
+                    "allowNull": false,
+                    "field": "title",
+                    "seqType": "Sequelize.STRING"
+                },
+                "description": {
+                    "allowNull": false,
+                    "field": "description",
+                    "seqType": "Sequelize.TEXT"
+                },
+                "createdAt": {
+                    "allowNull": false,
+                    "defaultValue": {
+                        "internal": true,
+                        "value": "Sequelize.NOW"
+                    },
+                    "field": "createdAt",
+                    "seqType": "Sequelize.DATE"
+                },
+                "updatedAt": {
+                    "allowNull": false,
+                    "defaultValue": {
+                        "internal": true,
+                        "value": "Sequelize.NOW"
+                    },
+                    "field": "updatedAt",
+                    "seqType": "Sequelize.DATE"
+                }
+            },
+            "indexes": []
+        },
+        "TestExaminations": {
+            "tableName": "TestExaminations",
+            "schema": {
+                "id": {
+                    "allowNull": false,
+                    "primaryKey": true,
+                    "autoIncrement": true,
+                    "field": "id",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "examiner_id": {
+                    "field": "examiner_id",
+                    "allowNull": true,
+                    "references": {
+                        "model": "Users",
+                        "key": "id"
+                    },
+                    "onDelete": "CASCADE",
+                    "onUpdate": "CASCADE",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "examined_id": {
+                    "field": "examined_id",
+                    "allowNull": true,
+                    "references": {
+                        "model": "Users",
+                        "key": "id"
+                    },
+                    "onDelete": "CASCADE",
+                    "onUpdate": "CASCADE",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "bloodPressure": {
+                    "field": "bloodPressure",
+                    "seqType": "Sequelize.STRING"
+                },
+                "pulsePerMinute": {
+                    "field": "pulsePerMinute",
+                    "seqType": "Sequelize.STRING"
+                },
+                "testResults": {
+                    "field": "testResults",
+                    "seqType": "Sequelize.ARRAY(Sequelize.STRING)"
+                },
+                "testDescription": {
+                    "field": "testDescription",
+                    "seqType": "Sequelize.TEXT"
+                },
+                "examinationDescription": {
+                    "field": "examinationDescription",
+                    "seqType": "Sequelize.ARRAY(Sequelize.STRING)"
+                },
+                "createdAt": {
+                    "allowNull": false,
+                    "defaultValue": {
+                        "internal": true,
+                        "value": "Sequelize.NOW"
+                    },
+                    "field": "createdAt",
+                    "seqType": "Sequelize.DATE"
+                },
+                "updatedAt": {
+                    "allowNull": false,
+                    "defaultValue": {
+                        "internal": true,
+                        "value": "Sequelize.NOW"
+                    },
+                    "field": "updatedAt",
+                    "seqType": "Sequelize.DATE"
+                }
+            },
+            "indexes": []
+        },
+        "Users": {
+            "tableName": "Users",
+            "schema": {
+                "id": {
+                    "allowNull": false,
+                    "primaryKey": true,
+                    "autoIncrement": true,
+                    "field": "id",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "factoryName": {
+                    "allowNull": false,
+                    "field": "factoryName",
+                    "seqType": "Sequelize.STRING"
+                },
+                "fullName": {
+                    "allowNull": false,
+                    "field": "fullName",
+                    "seqType": "Sequelize.STRING"
+                },
+                "username": {
+                    "allowNull": false,
+                    "field": "username",
+                    "seqType": "Sequelize.STRING"
+                },
+                "password": {
+                    "allowNull": false,
+                    "field": "password",
+                    "seqType": "Sequelize.STRING"
+                },
+                "role": {
+                    "allowNull": false,
+                    "field": "role",
+                    "seqType": "Sequelize.STRING"
+                },
+                "email": {
+                    "allowNull": false,
+                    "field": "email",
+                    "seqType": "Sequelize.STRING"
+                },
+                "mobile": {
+                    "field": "mobile",
+                    "seqType": "Sequelize.STRING"
+                },
+                "phone": {
+                    "field": "phone",
+                    "seqType": "Sequelize.STRING"
+                },
+                "address": {
+                    "field": "address",
+                    "seqType": "Sequelize.STRING"
+                },
+                "expirationDate": {
+                    "field": "expirationDate",
+                    "seqType": "Sequelize.STRING"
+                },
+                "dedicatedIp": {
+                    "field": "dedicatedIp",
+                    "seqType": "Sequelize.STRING"
+                },
+                "status": {
+                    "field": "status",
+                    "seqType": "Sequelize.STRING"
+                },
+                "numberOfFilledForms": {
+                    "field": "numberOfFilledForms",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "numberOfExaminedPersonnels": {
+                    "field": "numberOfExaminedPersonnels",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "createdAt": {
+                    "allowNull": false,
+                    "defaultValue": {
+                        "internal": true,
+                        "value": "Sequelize.NOW"
+                    },
+                    "field": "createdAt",
+                    "seqType": "Sequelize.DATE"
+                },
+                "updatedAt": {
+                    "allowNull": false,
+                    "defaultValue": {
+                        "internal": true,
+                        "value": "Sequelize.NOW"
+                    },
+                    "field": "updatedAt",
+                    "seqType": "Sequelize.DATE"
+                },
+                "factory_id": {
+                    "allowNull": true,
+                    "references": {
+                        "model": "Factories",
+                        "key": "id"
+                    },
+                    "onDelete": "CASCADE",
+                    "onUpdate": "CASCADE",
+                    "field": "factory_id",
+                    "seqType": "Sequelize.INTEGER"
+                }
+            },
+            "indexes": []
+        }
+    },
+    "path": "/home/negar/Documents/Codes/akaf/a/TebKar-Backend-10-31-20-34/db/migrations/_current.json",
+    "backupPath": "/home/negar/Documents/Codes/akaf/a/TebKar-Backend-10-31-20-34/db/migrations/_current_bak.json",
+    "exists": false,
+    "revision": 1
+}

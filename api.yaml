@@ -1,0 +1,205 @@
+swagger: "2.0"
+info:
+  title: tebkatr...
+  # description: This documentation is made by NegarM
+  version: 1.0
+  # contact: 
+    # email: miralaienegar@gmail.com
+  servers:
+    # -url: "http:localhost:5000/"
+    # description: This is a ticketing website
+
+schemas: [http]
+
+paths:
+
+# & FACTORY....
+# * CREATE FACTORY...
+  /api/v1/admin/factories:
+    post:
+      summary: For creating a new factory.
+      description: abbrvCode, name, mobile, status are required fields for creating a new factory. abbrvCode and name must be unique. Note that the value of 'status' is supposed to be either active or inactive, otherwise an error will be thrown (an error with following message: "any.only").
+      # produces:
+      # - text/html
+      parameters:
+      - in: body
+        name: create factory
+        schema:
+          type: object
+          properties:
+            abbrvCode:
+              type: string
+              required: true
+            name:
+              type: string
+              required: true
+            mobile:
+              type: string
+              required: true
+            status:
+              type: string
+              required: true
+    responses:
+      200:
+        description: Success. Factory is created.
+        schema:
+          type: string
+          # exmaple: "Successfully changed password"
+      # 400:
+        # description: Bad Request. New password and confirmNewPassword do not match.
+        # schema:
+          # type: string
+      401:
+        description: Unauthorized. Must be logged in and have enough permissions...
+      404:
+        description: Not Foud. CRUD.Duplicated. -> When abbrvCode is not unique and already exists... 
+#############################~################################################
+
+# * DELETE FACTORY...
+  /api/v1/admin/factories:
+    delete:
+      summary: For deleting a factory.
+      description: You must provide factory_id in url to delete the given factory...
+      # ! FACTORY_ID IN URL....
+    responses:
+      200:
+        description: Success. Factory is deleted.
+        schema:
+          type: string
+          exmaple: "CRUD>DELETED"
+          # ! SHOW DATA IN JSON...
+      # 400:
+        # description: Bad Request. New password and confirmNewPassword do not match.
+        # schema:
+          # type: string
+      # 401:
+        # description: Unauthorized. Must be logged in and have enough permissions...
+      404:
+        description: Not Found. CRUD.Not_Found. -> When given id does not exist..
+#############################~################################################
+
+# * LIST USER...
+  /api/v1/admin/factories:
+    get:
+      summary: For getting a list of all existing users...
+      # description: 
+      # produces:
+      # - text/html
+    responses:
+      200:
+          # description: Success. Ticket is created.
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+                example: "CRUD.Success"
+            data:
+                type: object
+                properties:
+                  docs:
+                    type: array
+                    items:
+                      id:
+                        type: string
+                      factoryName:
+                        type: string
+                      fullName:
+                        type: string
+                      username:
+                        type: string
+                      password:
+                        type: string
+                      role:
+                        type: string
+                      email:
+                        type: string
+                      mobile:
+                        type: string
+                      phone:
+                        type: string
+                      address:
+                        type: string
+                      expirationDate:
+                        type: string
+                      dedicatedIp:
+                        type: string
+                      status:
+                        type: string
+                      numberOfFilledForms:
+                        type: integer
+                      numberOfExaminedPersonnels:
+                        type: integer
+                      createdAt:
+                        type: string
+                      updatedAt:
+                        type: string
+                      factory_id:
+                        type: integer
+
+          # exmaple: "Successfully changed password"
+      # 400:
+        # description: Bad Request. New password and confirmNewPassword do not match.
+        # schema:
+          # type: string
+      401:
+        description: Unauthorized. Must be logged in and have enough permissions...
+      # 404:
+        # description: Not Foud. CRUD.Duplicated. -> When abbrvCode is not unique and already exists... 
+#############################~################################################
+
+# & USER....
+# * CREATE USER...
+  /api/v1/admin/users:
+    post:
+      summary: For creating a new user(کاربر).
+      description: factoryName, fullName, username, password, role, email, mobile, phone, address, expirationDate, dedicatedIp, status,  are possible fields for creating a new user. mobile and username must be unique. Note that the value of 'role' is supposed to be either........ , and status must be either active or inactive, otherwise an error will be thrown (an error with following message: "any.only").
+      parameters:
+      - in: body
+        name: create factory
+        schema:
+          type: object
+          properties:
+            factoryName:
+              type: string
+              required: true
+            fullName:
+              type: string
+              required: true
+            username:
+              type: string
+            password:
+              type: string
+            role:
+              type: string
+              required: true
+            email:
+              type: string
+            mobile:
+              type: string
+            phone:
+              type: string
+            address:
+              type: string
+            expirationDate:
+              type: string
+            dedicatedIp:
+              type: string
+            status:
+              type: string
+              required: true
+    responses:
+      200:
+        description: Success. Factory is created.
+        schema:
+          type: string
+          # exmaple: "Successfully changed password"
+      # 400:
+        # description: Bad Request. New password and confirmNewPassword do not match.
+        # schema:
+          # type: string
+      401:
+        description: Unauthorized. Must be logged in and have enough permissions...
+      404:
+        description: Not Foud. CRUD.Not_Found. -> When factoryName odes not exist..
+#############################~################################################

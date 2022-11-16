@@ -1,0 +1,56 @@
+{
+  "name": "teb-kar",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "dev": "npx sequelize-cli db:migrate && npx sequelize-cli db:seed:all &&  nodemon app.js",
+    "start": "node app.js",
+    "migrate:up": "npx sequelize-cli db:migrate",
+    "migrate:down": "npx sequelize-cli db:migrate:undo:all",
+    "migrate:all": "npm run migrate:down && npm run migrate:up",
+    "seed:gen": "npx sequelize-cli seed:generate --name ",
+    "seed:up": "npx sequelize-cli db:seed:all",
+    "seed:down": "npx sequelize-cli db:seed:undo:all",
+    "seed:all": "npx sequelize-cli db:seed:undo:all && npm run seed:up",
+    "db:reset:aux": "npm run migrate:all && npx sequelize-cli db:seed --seed 20200914083519-admin.js 20200914090919-rbac.js 20200922105407-settings.js",
+    "db:reset:seed": "timeout 4 npx sequelize-cli db:seed:undo --seed 20200922105407-settings.js 20200914090919-rbac.js ; timeout 6 npx sequelize-cli db:seed --seed 20200922105407-settings.js 20200914090919-rbac.js",
+    "db:reset": "npm run migrate:all && npm run seed:up"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://git.akafweb.com/miralaieNegar/teb-kar.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "casbin": "^5.19.0",
+    "casbin-sequelize-adapter": "^2.4.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.1",
+    "generate-password": "^1.7.0",
+    "helmet": "^6.0.0",
+    "http": "^0.0.1-security",
+    "ioredis": "^5.2.3",
+    "joi": "^17.6.2",
+    "jsonwebtoken": "^8.5.1",
+    "localizify": "^2.0.0",
+    "lodash": "^4.17.21",
+    "morgan": "^1.10.0",
+    "multer": "^1.4.5-lts.1",
+    "pg": "^8.8.0",
+    "pg-hstore": "^2.3.4",
+    "sequelize": "^6.16.2",
+    "sequelize-mig": "^3.1.3",
+    "sequelize-paginate": "^1.1.6",
+    "swagger-ui-express": "^4.5.0",
+    "yamljs": "^0.3.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20",
+    "sequelize-cli": "^6.5.1"
+  }
+}

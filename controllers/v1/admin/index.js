@@ -1,0 +1,16 @@
+module.exports = {
+    casesController: require('./casesController.js'),
+    factoriesController: require('./factoriesController.js'),
+    usersController: require('./usersController.js'),
+    harmfulFactorsController: require('./harmfulFactorsController.js'),
+    optometryAndAudiometryController: require('./optometryAndAudiometryController.js'),
+    spirometryAndEcgController: require('./spirometryAndEcgController.js'),
+    suggestionController: require('./suggestionController.js'),
+    testsAndExaminationsController: require('./testsAndExaminationsController.js'),
+    roleController: require('./roleController'),
+    healthInfoController: require('./healthInfoController'),
+    settingsController: require('./settingsController'),
+    dashboardControlller: require('./dashboardControlller'),
+    reportController: require('./reportController'),
+    personnelsController: require('./personnelsController'),
+};
